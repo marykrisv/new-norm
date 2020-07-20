@@ -1,0 +1,95 @@
+navbar
+https://bootsnipp.com/snippets/v8kmE
+
+sidemenu
+https://bootsnipp.com/snippets/r1Pjd
+
+Component styles
+https://angular.io/guide/component-styles
+
+tables
+https://bootsnipp.com/snippets/8A2P3
+
+https://datatables.net/
+
+search box
+https://bootsnipp.com/snippets/9Avx
+
+font awesome
+https://fontawesome.com/v4.7.0/icons/
+
+restapi
+https://www.youtube.com/watch?v=OEWXbpUMODk
+
+passing data
+https://www.youtube.com/watch?v=I317BhehZKM
+
+
+authentication ipi
+https://www.youtube.com/watch?v=e8BlURn6SFk
+https://www.youtube.com/watch?v=F1GUjHPpCLA
+
+redirect module
+https://www.youtube.com/watch?v=LEB9RUCM1m8
+
+for tomorrow
+https://www.youtube.com/watch?v=Q1839NnaYMY
+https://www.youtube.com/watch?v=7L80dKtfHe0
+
+properties reader
+https://www.npmjs.com/package/properties-reader
+
+input with validation
+https://bootsnipp.com/snippets/6aGm
+
+checkbox
+https://bootsnipp.com/snippets/GaxR2
+
+phone number
+https://stackblitz.com/edit/angular6-phone-mask?file=app%2Fapp.component.ts
+
+calendar
+https://bootsnipp.com/snippets/PEZZ7
+https://bootsnipp.com/snippets/M3jmA
+
+multiple text (tags input)
+https://bootsnipp.com/snippets/exqd3
+
+$sth->debugDumpParams();
+
+create view
+https://www.w3schools.com/sql/sql_view.asp
+CREATE VIEW currentlocations AS
+SELECT l.*, uc.userName as ucUsername, um.userName as umUsername
+FROM location l
+LEFT JOIN user uc on l.locCreatedBy=uc.userId
+LEFT JOIN user um on l.locModifiedBy=um.userId
+WHERE l.locDeleted = 0; 
+
+CREATE VIEW currentproducts AS
+SELECT p.*, dos.*, str.*, con.*, man.*, res.*, uom.*, uc.userName as ucUsername, um.userName as umUsername
+FROM product p
+LEFT JOIN dosage dos on p.prodDosId=dos.dosId
+LEFT JOIN strength str on p.prodStrId=str.strId
+LEFT JOIN concentration con on p.prodConId=con.conId
+LEFT JOIN manufacturer man on p.prodManId=man.manId
+LEFT JOIN restriction res on p.prodResId=res.resId
+LEFT JOIN uom uom on p.prodUomId=uom.uomId
+LEFT JOIN user uc on p.prodCreatedBy=uc.userId
+LEFT JOIN user um on p.prodModifiedBy=um.userId
+WHERE p.prodDeleted = 0; 
+
+https://stackoverflow.com/questions/17187124/how-to-select-all-columns-and-a-count-in-the-same-query
+
+
+asyn promise
+https://www.youtube.com/watch?v=TCYhr_UMZkI
+
+wysiwyg
+https://www.tiny.cloud/my-account/onboarding/
+https://www.youtube.com/watch?v=ThSa34TCCwE
+https://www.youtube.com/watch?v=kS8Gde2Db2o
+
+
+upload file to server
+https://www.youtube.com/watch?v=JTlSOpkfy7g

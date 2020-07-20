@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~bootstrap/dist/css/bootstrap.min.css';
+
+html, body{min-height:100%;}
+body{height:100vh;}
+
+#wrapper.active #sidebar-wrapper {
+    left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+    // left: 0px;
+    left: -250px;
+    width: 250px;
+    transition: all 0.4s ease 0s;
+}
+
+.dropdown-menu {
+  z-index: 10;
+}
+
+@media (max-width: 767px) {
+    // .active {
+    //     background-color: black;
+    //   #modal-screen {
+    //     display: block;
+    //   }
+    // }
+
+    #modal-screen {
+        display: block;
+    }
+
+    :not(.active) {
+      #modal-screen {
+        display: block;
+      }
+    }
+  }
