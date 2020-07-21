@@ -93,8 +93,6 @@ export class AdduserComponent implements OnInit {
       this.priUserInput.setValue(privilege.priUser);
       this.priInventoryInput.setValue(privilege.priInventory);
       this.priManageInput.setValue(privilege.priManage);
-      this.priPatientManagementInput.setValue(privilege.priPatientManagement);
-      this.priPharmacyCornerInput.setValue(privilege.priPharmacyCorner);
       this.priNotificationInput.setValue(privilege.priNotification);
       this.priPosInput.setValue(privilege.priPos);
     }
@@ -206,8 +204,6 @@ export class AdduserComponent implements OnInit {
       priUser: this.priUserInput.value,
       priInventory: this.priInventoryInput.value,
       priManage: this.priManageInput.value,
-      priPatientManagement: this.priPatientManagementInput.value,
-      priPharmacyCorner: this.priPharmacyCornerInput.value,
       priNotification: this.priNotificationInput.value,
       priPos: this.priPosInput.value
     }

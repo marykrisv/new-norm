@@ -46,7 +46,7 @@ export class AppComponent {
   }
 
   setPrivilege () {
-    this.privilegeService.getPrivilege({priUserId: this.user_session.userId}).then(
+    this.privilegeService.getPrivilege(this.user_session.userId).then(
       response => {
         const privilege = {
           priDashboard: response['data'][0]['priDashboard'],

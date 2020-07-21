@@ -208,7 +208,6 @@ export class ViewuserComponent implements OnInit {
     this.userService.getAllUsers().then(response => {
       this.populateUsers(response); 
     }).catch(response => {
-      console.log(response);
       alert("Connection Problem. Please check your internet.");
     }).finally(() => {
       this.loading = false;

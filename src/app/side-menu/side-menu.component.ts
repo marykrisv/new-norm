@@ -33,8 +33,6 @@ export class SideMenuComponent implements OnInit {
       priUser: true,
       priInventory: true,
       priManage: true,
-      priPatientManagement: true,
-      priPharmacyCorner: true,
       priNotification: true,
       priPos: true
     }

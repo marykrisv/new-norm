@@ -7,7 +7,7 @@ import { ToolConfig } from '../common/toolconfig';
 })
 export class UomService {
 
-  apiUrl = "/pharmtech/api/uom/";
+  apiUrl = "/newnorm/api/uom/";
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +32,7 @@ export class UomService {
   }
 
   async deleteUom(uom: any) {
-    return await this.http.put('http://'+ToolConfig.url+'/pharmtech/api/uom/delete-uom', 
+    return await this.http.put('http://'+ToolConfig.url+'/newnorm/api/uom/delete-uom', 
     JSON.stringify(uom)).toPromise();
   }
 }

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConcentrationService {
 
-  apiUrl = "/pharmtech/api/concentration/";
+  apiUrl = "/newnorm/api/concentration/";
 
   constructor(private http: HttpClient) { }
 

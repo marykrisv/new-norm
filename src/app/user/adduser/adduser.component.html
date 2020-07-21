@@ -82,8 +82,25 @@
                                                             [ngClass]="this.userLnameInput.invalid?'glyphicon-remove':'glyphicon-ok'"
                                                             class="glyphicon"></span>
                                                     </span>
+                                                </div><br>
+                                                <label for="validate-text">Birthdate</label>
+                                                <div class="input-group">
+                                                    <input 
+                                                        type="date" 
+                                                        class="form-control dateInput" 
+                                                        formControlName="userBirthdate"
+                                                        placeholder="Birthdate"
+                                                        (change)="generateUserName()">
+                                                    <span 
+                                                        [ngClass]="this.userBirthdateInput.invalid?'danger':'success'"
+                                                        class="input-group-addon">
+                                                        <span 
+                                                            [ngClass]="this.userBirthdateInput.invalid?'glyphicon-remove':'glyphicon-ok'"
+                                                            class="glyphicon"></span>
+                                                    </span>
                                                 </div>
-                                                <br>
+                                            </div>
+                                            <div class="col-md-6"> 
                                                 <label for="validate-select">Gender</label>
                                                 <div class="input-group">
                                                     <select 
@@ -104,42 +121,7 @@
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>
-                                                <br>                                                
-                                                <label for="validate-text">Citizenship</label>
-                                                <div class="input-group">
-                                                    <input 
-                                                        [value] = "this.userCitizenshipInput.value | titlecase"
-                                                        type="text" 
-                                                        class="form-control" 
-                                                        formControlName="userCitizenship"
-                                                        placeholder="Citizenship">
-                                                    <span 
-                                                        [ngClass]="this.userCitizenshipInput.invalid?'danger':'success'"
-                                                        class="input-group-addon">
-                                                        <span 
-                                                            [ngClass]="this.userCitizenshipInput.invalid?'glyphicon-remove':'glyphicon-ok'"
-                                                            class="glyphicon"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="validate-text">Birthdate</label>
-                                                <div class="input-group">
-                                                    <input 
-                                                        type="date" 
-                                                        class="form-control dateInput" 
-                                                        formControlName="userBirthdate"
-                                                        placeholder="Birthdate"
-                                                        (change)="generateUserName()">
-                                                    <span 
-                                                        [ngClass]="this.userBirthdateInput.invalid?'danger':'success'"
-                                                        class="input-group-addon">
-                                                        <span 
-                                                            [ngClass]="this.userBirthdateInput.invalid?'glyphicon-remove':'glyphicon-ok'"
-                                                            class="glyphicon"></span>
-                                                    </span>
-                                                </div>
-                                                <br>
+                                                <br>                                               
                                                 <label for="validate-text">Contact No.</label>
                                                 <div class="input-group">
                                                     <input 
@@ -179,22 +161,6 @@
                                                         class="input-group-addon">
                                                         <span 
                                                             [ngClass]="this.userRoleInput.invalid?'glyphicon-remove':'glyphicon-ok'"
-                                                            class="glyphicon"></span>
-                                                    </span>
-                                                </div>
-                                                <br>
-                                                <label for="validate-text">License No.</label>
-                                                <div class="input-group">
-                                                    <input 
-                                                        type="text" 
-                                                        class="form-control" 
-                                                        formControlName="userLicenseNo"
-                                                        placeholder="License No.">
-                                                    <span 
-                                                        [ngClass]="this.userLicenseNoInput.invalid?'danger':'info'"
-                                                        class="input-group-addon">
-                                                        <span 
-                                                            [ngClass]="this.userMnameInput.invalid?'glyphicon-remove':'glyphicon-asterisk'"
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ManufacturerService {
 
-  apiUrl = "/pharmtech/api/manufacturer/";
+  apiUrl = "/newnorm/api/manufacturer/";
 
   constructor(private http: HttpClient) { }
 

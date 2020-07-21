@@ -8,7 +8,7 @@ import { ToolConfig } from '../common/toolconfig';
 })
 export class PrivilegeService {
 
-  apiUrl = "/pharmtech/api/privilege/";
+  apiUrl = "/newnorm/api/privilege/";
 
   constructor(private http: HttpClient) { }
 
@@ -17,9 +17,8 @@ export class PrivilegeService {
     JSON.stringify(user)).toPromise();
   }
 
-  async getPrivilege (user: any) {
-    return await this.http.post('http://'+ToolConfig.url+this.apiUrl+'get-privilege', 
-    JSON.stringify(user)).toPromise();
+  async getPrivilege (userId: number) {
+    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'get-privilege.php?id='+userId).toPromise();
   }
 
   async createPrivilege (privilege: any) {

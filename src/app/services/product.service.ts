@@ -7,7 +7,7 @@ import { ToolConfig } from '../common/toolconfig';
 })
 export class ProductService {
 
-  apiUrl = "/pharmtech/api/product/";
+  apiUrl = "/newnorm/api/product/";
 
   constructor(private http: HttpClient) { }
 
