@@ -175,18 +175,18 @@ export class LoginComponent implements OnInit {
   }
 
   setPrivileges (response: any) {
-    this.privilege = {
-      priDashboard: response['data'][0]['priDashboard'],
-      priUser: response['data'][0]['priUser'],
-      priInventory: response['data'][0]['priInventory'],
-      priManage: response['data'][0]['priManage'],
-      priPatientManagement: response['data'][0]['priPatientManagement'],
-      priPharmacyCorner: response['data'][0]['priPharmacyCorner'],
-      priNotification: response['data'][0]['priNotification'],
-      priPos: response['data'][0]['priPos']
-    }
+    // this.privilege = {
+    //   priDashboard: response['data'][0]['priDashboard'],
+    //   priUser: response['data'][0]['priUser'],
+    //   priInventory: response['data'][0]['priInventory'],
+    //   priManage: response['data'][0]['priManage'],
+    //   priPatientManagement: response['data'][0]['priPatientManagement'],
+    //   priPharmacyCorner: response['data'][0]['priPharmacyCorner'],
+    //   priNotification: response['data'][0]['priNotification'],
+    //   priPos: response['data'][0]['priPos']
+    // }
 
-    this.data.changePrivilege(this.privilege);
+    // this.data.changePrivilege(this.privilege);
   }
 
   successfulLogin () {
@@ -195,7 +195,7 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('session', JSON.stringify(this.user_session));
     localStorage.setItem('privilege', JSON.stringify(this.privilege));
 
-    this.router.navigate(["menu/patient-management"]);    
+    this.router.navigate(["menu/users"]);    
   }
 
   changeLoginPassword () {

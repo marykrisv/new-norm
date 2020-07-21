@@ -1,6 +1,6 @@
 <div id="sidebar-wrapper">
     <div class="nav-side-menu">
-        <div class="brand">{{ 'Pharmtech '+userSession.userLocName }}</div>
+        <div class="brand">{{ appName+' '+userSession.userLocName }}</div>
         <!-- <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i> -->
     
             <div class="menu-list">
@@ -20,7 +20,7 @@
                             <i class="fa fa-users fa-lg"></i> Users
                         </a>
                     </li>
-                    <li [ngClass]="userPrivilege.priInventory==false?'hidden':''"
+                    <!-- <li [ngClass]="userPrivilege.priInventory==false?'hidden':''"
                         routerLink="inventory" 
                         routerLinkActive="active">
                         <a>
@@ -34,11 +34,11 @@
                         data-target="#others" 
                         class="collapsed">
                         <a><i class="fa fa-cogs fa-lg"></i> Manage <span class="arrow"></span></a>
-                        </li>
+                        </li> -->
                         <!-- <ul class="sub-menu collapse" id="others"> -->
-                        <ul class="sub-menu" id="others">
+                        <!-- <ul class="sub-menu" id="others"> -->
                             <!-- <li class="active"><a href="#">Concentration</a></li> -->
-                            <li routerLink="concentrations"
+                            <!-- <li routerLink="concentrations"
                                 routerLinkActive="active"><a>Concentration</a></li>
                             <li routerLink="discounts"
                                 routerLinkActive="active"><a>Discount</a></li>
@@ -77,7 +77,7 @@
                         <a href="#">
                             <i class="fa fa-calculator fa-lg"></i> POS
                         </a>
-                    </li>                    
+                    </li>                     -->
                 </ul>
         </div>
     </div>

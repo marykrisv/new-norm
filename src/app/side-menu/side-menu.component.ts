@@ -11,6 +11,7 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
+  appName = "NewNorm";
   screenWidth = window.innerWidth;
   userPrivilege: PrivilegeInterface;
   userSession: SessionInterface;
