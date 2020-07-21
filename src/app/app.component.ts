@@ -34,11 +34,11 @@ export class AppComponent {
       let sessionObj: any = JSON.parse(localStorage.getItem('session')); // string to generic object first
       let session: SessionInterface = <SessionInterface>sessionObj;
 
-      // let privilegeObj: any = JSON.parse(localStorage.getItem('privilege')); // string to generic object first
-      // let privilege: PrivilegeInterface = <PrivilegeInterface>privilegeObj;
+      let privilegeObj: any = JSON.parse(localStorage.getItem('privilege')); // string to generic object first
+      let privilege: PrivilegeInterface = <PrivilegeInterface>privilegeObj;
 
       this.auth.changeSession(session);
-      // this.data.changePrivilege(privilege);
+      this.data.changePrivilege(privilege);
 
       //to be used for checking the privilege for the guard
       this.setPrivilege();    
@@ -46,32 +46,25 @@ export class AppComponent {
   }
 
   setPrivilege () {
-    // this.privilegeService.getPrivilege({priUserId: this.user_session.userId}).then(
-    //   response => {
-    //     const privilege = {
-    //       priDashboard: response['data'][0]['priDashboard'],
-    //       priUser: response['data'][0]['priUser'],
-    //       priInventory: response['data'][0]['priInventory'],
-    //       priManage: response['data'][0]['priManage'],
-    //       priPatientManagement: response['data'][0]['priPatientManagement'],
-    //       priPharmacyCorner: response['data'][0]['priPharmacyCorner'],
-    //       priNotification: response['data'][0]['priNotification'],
-    //       priPos: response['data'][0]['priPos']
-    //     }
+    this.privilegeService.getPrivilege({priUserId: this.user_session.userId}).then(
+      response => {
+        const privilege = {
+          priDashboard: response['data'][0]['priDashboard'],
+          priUser: response['data'][0]['priUser'],
+          priInventory: response['data'][0]['priInventory'],
+          priManage: response['data'][0]['priManage'],
+          priNotification: response['data'][0]['priNotification'],
+          priPos: response['data'][0]['priPos']
+        }
     
-    //     this.data.changePrivilege(privilege);
-    //     localStorage.setItem('privilege', JSON.stringify(privilege));
+        this.data.changePrivilege(privilege);
+        localStorage.setItem('privilege', JSON.stringify(privilege));
       
-    //     // this.router.navigate(["menu/patient-management"]);  
-    //   }
-    // ).catch(response => {
-    //   // alert("Connection Problem. Please check your internet.");
-    // });;
-
-    if (localStorage.getItem('session') != null) {
-      console.log("test");
-      this.router.navigate(["menu/users"]);
-    }
+        this.router.navigate(["menu/users"]);
+      }
+    ).catch(response => {
+      alert("Connection Problem. Please check your internet.");
+    });
   }
 }
 

@@ -8,12 +8,6 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 })
 export class UserService {
 
-  // private users = new BehaviorSubject<any>(null);
-  // currentUsers = this.users.asObservable();
-   // changeUsers (users: any) {
-  //   this.users.next(users);
-  // }
-
   apiUrl = "/newnorm/api/user/";
 
   constructor(private http: HttpClient) {
@@ -25,27 +19,9 @@ export class UserService {
     .toPromise();
   }
 
-  async viewByStatusAllLocation (locId: number, role: string) {
-    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-by-status-all-location.php?status='
-    +role+'&limit='+ToolConfig.limitUsers)
-    .toPromise();
-  }
-
   async viewByStatusOneLocation (locId: number, role: string) {
     return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-by-status-one-location.php?locid='
     +locId+'&status='+role+'&limit='+ToolConfig.limitUsers)
-    .toPromise();
-  }
-
-  async searchUserOneLocation (locId: number, searchBy: string, search: string) {
-    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-by-search-one-location?locid='
-    +locId+'&searchBy='+searchBy+'&search='+search+'&limit='+ToolConfig.limitUsers)
-    .toPromise();
-  }
-
-  async searchUserAllLocation (locId: number, searchBy: string, search: string) {
-    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-by-search-all-location?locid='
-    +locId+'&searchBy='+searchBy+'&search='+search+'&limit='+ToolConfig.limitUsers)
     .toPromise();
   }
 
@@ -55,15 +31,8 @@ export class UserService {
     .toPromise();
   }
 
-  async getAllUsersFromThisLocation(locId: number) {
-    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-all-from-one-location.php?locid='
-    +locId+'&limit='+ToolConfig.limitUsers)
-    .toPromise();
-  }
-
-  async getAllUsersFromAllLocation() {
-    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-all-from-all-location.php?limit='
-    +ToolConfig.limitUsers)
+  async getAllUsers() {
+    return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-all-user.php?limit='+ToolConfig.limitUsers)
     .toPromise();
   }
   

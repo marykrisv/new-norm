@@ -4,8 +4,6 @@ export interface PrivilegeInterface {
     priUser: boolean,
     priInventory: boolean,
     priManage: boolean,
-    priPatientManagement: boolean,
-    priPharmacyCorner: boolean,
     priNotification: boolean,
     priPos: boolean
 }

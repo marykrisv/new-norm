@@ -41,22 +41,6 @@
                       </div> 
                       <div class="col-md-6 col-xs-12 col-sm-12">
                         <div class="row" id="options">
-                          <div *ngIf="userSession.userRole == 'Super Admin'" class="col-md-4 col-sm-12 col-xs-12">
-                            <div id="location-container">
-                              <span>Location</span>
-                              <select 
-                                formControlName="location"
-                                class="form-control" 
-                                name="validate-select" 
-                                placeholder="Validate Select"                                
-                                (change)="filterByLocation()">
-                                <option value="All" (click)="filterByLocation()">All</option>
-                                <option 
-                                  *ngFor="let loc of locations" 
-                                  [value]="loc.locId">{{ loc.locName }}</option>
-                              </select>
-                            </div>
-                          </div>
                           <div class="col-md-4 col-sm-12 col-xs-12">
                             <div id="category-container">
                               <span>Status</span>
@@ -72,26 +56,7 @@
                                 <option value="Deactivated">Deactivated</option>
                               </select>
                             </div>
-                          </div>
-                          <!-- <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div id="role-container">
-                              <span>Role</span>
-                              <select 
-                                formControlName="role"
-                                class="form-control" 
-                                name="validate-select" 
-                                placeholder="Validate Select"
-                                (change)="filterByRole()">
-                                <option value="All">All</option>
-                                <option value="Super Admin">Super Admin</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Pharmacist">Pharmacist</option>
-                                <option value="Doctor">Doctor</option>
-                                <option value="Staff">Staff</option>
-                              </select>
-                            </div>                            
-                          </div> -->
-
+                          </div>  
                         </div>                        
                       </div>                         
                     </form>
@@ -116,7 +81,6 @@
                         <th class="hidden-xs" width="10%">Gender</th>
                         <th class="hidden-xs">Age</th>
                         <th width="15%">Role</th>
-                        <th width="15%" *ngIf="userSession.userRole == 'Super Admin'">Location</th>
                         <th width="15%">Status</th>                        
                       </tr> 
                     </thead>
@@ -144,7 +108,6 @@
                           </td>
                           <td class="hidden-xs"><span>{{ user.userBirthdate | age }}</span></td>
                           <td><span>{{ user.userRole }}</span></td>
-                          <td *ngIf="userSession.userRole == 'Super Admin'"><span>{{ user.locName }}</span></td>
                           <td><span>{{ user.userStatus }}</span></td>
                         </tr>
                       </ng-template>

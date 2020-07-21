@@ -25,9 +25,19 @@ export class SideMenuComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.data.currentUserPrivilege.subscribe(currentUserPrivilege => 
-      this.userPrivilege = currentUserPrivilege
-    );
+    // this.data.currentUserPrivilege.subscribe(currentUserPrivilege => 
+    //   this.userPrivilege = currentUserPrivilege
+    // );
+    this.userPrivilege = {
+      priDashboard: true,
+      priUser: true,
+      priInventory: true,
+      priManage: true,
+      priPatientManagement: true,
+      priPharmacyCorner: true,
+      priNotification: true,
+      priPos: true
+    }
 
     this.auth.currentSession.subscribe(currentSession => 
       this.userSession = currentSession

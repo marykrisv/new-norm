@@ -45,10 +45,9 @@ export class UserdetailComponent implements OnInit {
     userFname: new FormControl('', [Validators.required, Validators.minLength(2)]),
     userMname: new FormControl('', Validators.minLength(2)),
     userLname: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    userGender: new FormControl('', Validators.required),
     userBirthdate: new FormControl('', Validators.required),
+    userGender: new FormControl('', Validators.required),
     userAddress: new FormControl('', Validators.required),
-    userCitizenship: new FormControl('', Validators.required),
     userContactNo: new FormControl('', PhoneValidator.isPhoneInvalid), //fix later
     userRole: new FormControl('', Validators.required),
     userLicenseNo: new FormControl('')
@@ -63,14 +62,12 @@ export class UserdetailComponent implements OnInit {
     priUser: new FormControl(false, Validators.required),
     priInventory: new FormControl(false, Validators.required),
     priManage: new FormControl(false, Validators.required),
-    priPatientManagement: new FormControl(false, Validators.required),
-    priPharmacyCorner: new FormControl(false, Validators.required),
     priNotification: new FormControl(false, Validators.required),
     priPos: new FormControl(false, Validators.required)
   });
 
   ngOnInit(): void {
-    this.auth.currentSession.subscribe(currentSession => this.userSession = currentSession);
+    // this.auth.currentSession.subscribe(currentSession => this.userSession = currentSession);
 
     this.route.paramMap.subscribe(params => {
       this.userId = params.get('userId');
@@ -101,8 +98,6 @@ export class UserdetailComponent implements OnInit {
       this.priUserInput.setValue(+this.userDetail.priUser);
       this.priInventoryInput.setValue(+this.userDetail.priInventory);
       this.priManageInput.setValue(+this.userDetail.priManage);
-      this.priPatientManagementInput.setValue(+this.userDetail.priPatientManagement);
-      this.priPharmacyCornerInput.setValue(+this.userDetail.priPharmacyCorner);
       this.priNotificationInput.setValue(+this.userDetail.priNotification);
       this.priPosInput.setValue(+this.userDetail.priPos);
     }
@@ -211,8 +206,6 @@ export class UserdetailComponent implements OnInit {
       this.priUserInput.setValue(false);
       this.priInventoryInput.setValue(false);
       this.priManageInput.setValue(false);
-      this.priPatientManagementInput.setValue(false);
-      this.priPharmacyCornerInput.setValue(false);
       this.priNotificationInput.setValue(false);
       this.priPosInput.setValue(false);
     } else {
@@ -222,8 +215,6 @@ export class UserdetailComponent implements OnInit {
       this.priUserInput.setValue(privilege.priUser);
       this.priInventoryInput.setValue(privilege.priInventory);
       this.priManageInput.setValue(privilege.priManage);
-      this.priPatientManagementInput.setValue(privilege.priPatientManagement);
-      this.priPharmacyCornerInput.setValue(privilege.priPharmacyCorner);
       this.priNotificationInput.setValue(privilege.priNotification);
       this.priPosInput.setValue(privilege.priPos);
     }
@@ -261,14 +252,11 @@ export class UserdetailComponent implements OnInit {
         userFname: this.userFnameInput.value,
         userMname: this.userMnameInput.value,
         userLname: this.userLnameInput.value,
-        userGender: this.userGenderInput.value,
         userBirthdate: this.userBirthdateInput.value,
+        userGender: this.userGenderInput.value,
         userAddress: this.userAddressInput.value,
-        userCitizenship: this.userCitizenshipInput.value,
         userContactNo: this.userContactNoInput.value,
         userRole: this.userRoleInput.value,
-        userLicenseNo: this.userLicenseNoInput.value,        
-        userLocId: 1,
         userModifiedBy: this.userSession.userId,
         userModifiedOn: new Date()
       }
@@ -318,8 +306,6 @@ export class UserdetailComponent implements OnInit {
       this.priUserInput.setValue('');
       this.priInventoryInput.setValue('');
       this.priManageInput.setValue('');
-      this.priPatientManagementInput.setValue('');
-      this.priPharmacyCornerInput.setValue('');
       this.priNotificationInput.setValue('');
       this.priPosInput.setValue('');
 
@@ -339,8 +325,6 @@ export class UserdetailComponent implements OnInit {
       priUser: this.priUserInput.value,
       priInventory: this.priInventoryInput.value,
       priManage: this.priManageInput.value,
-      priPatientManagement: this.priPatientManagementInput.value,
-      priPharmacyCorner: this.priPharmacyCornerInput.value,
       priNotification: this.priNotificationInput.value,
       priPos: this.priPosInput.value
     }
@@ -436,14 +420,6 @@ export class UserdetailComponent implements OnInit {
 
   get priManageInput () {
     return this.privilegeForm.get('priManage');
-  }
-
-  get priPatientManagementInput () {
-    return this.privilegeForm.get('priPatientManagement');
-  }
-
-  get priPharmacyCornerInput () {
-    return this.privilegeForm.get('priPharmacyCorner');
   }
 
   get priNotificationInput () {
