@@ -83,8 +83,6 @@ export class AdduserComponent implements OnInit {
     } else {
       var privilege: PrivilegeInterface = RoleConfig.role[role];
 
-      console.log(privilege);
-
       this.priDashboardInput.setValue(privilege.priDashboard);
       this.priUserInput.setValue(privilege.priUser);
       this.priInventoryInput.setValue(privilege.priInventory);

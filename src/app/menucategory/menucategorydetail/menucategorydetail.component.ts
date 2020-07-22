@@ -43,7 +43,6 @@ export class MenucategorydetailComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.mcId = params.get('mcId');
-      console.log(params);
     });
 
     this.populateDetails();

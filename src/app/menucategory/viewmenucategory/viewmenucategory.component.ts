@@ -56,7 +56,6 @@ export class ViewmenucategoryComponent implements OnInit {
     this.mcService.viewAllMenucategory().then(response => {
       this.populateMenucategory(response);
     }).catch(response => {
-      console.log(response);
       alert("Connection Problem. Please check your internet.");
     });
   }
