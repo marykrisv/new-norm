@@ -17,6 +17,7 @@ export class MenucategoryService {
   }
 
   async createNewMenucategory(menucategory: any) {
+    console.log('http://'+ToolConfig.url+this.apiUrl+'create-menucategory');
     return await this.http.post('http://'+ToolConfig.url+this.apiUrl+'create-menucategory', 
     JSON.stringify(menucategory))
     .toPromise();

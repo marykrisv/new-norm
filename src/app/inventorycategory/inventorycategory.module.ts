@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,8 @@ import { InventorycategorydetailComponent } from './inventorycategorydetail/inve
   declarations: [AddinventorycategoryComponent, ViewinventorycategoryComponent, InventorycategorydetailComponent],
   imports: [
     CommonModule,
-    InventorycategoryRoutingModule
+    InventorycategoryRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class InventorycategoryModule { }

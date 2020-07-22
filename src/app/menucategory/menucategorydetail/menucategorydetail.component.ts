@@ -26,6 +26,7 @@ export class MenucategorydetailComponent implements OnInit {
 
   mcForm = new FormGroup({
     value: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    description: new FormControl('', Validators.minLength(2)),
     specialCategory: new FormControl(false)
   });
 
@@ -75,6 +76,7 @@ export class MenucategorydetailComponent implements OnInit {
   intializeForm() {
     if (this.mcDetails != null) {
       this.valueInput.setValue(this.mcDetails.mcValue);
+      this.descriptionInput.setValue(this.mcDetails.mcDescription);
       this.specialCategoryInput.setValue(+this.mcDetails.mcSpecialCategory);
     }
   }
@@ -83,7 +85,8 @@ export class MenucategorydetailComponent implements OnInit {
     if (confirm('Are you sure you want to update this menucategory?')) {
       this.stillUpdatingMenucategory = true;
       const menucategory = {
-        mcValue: this.valueInput.value,
+        mcValue: this.valueInput.value.toString().trim(),
+        mcDescription: this.descriptionInput.value.toString().trim(),
         mcSpecialCategory: this.specialCategoryInput.value,
         mcModifiedBy: this.userSession.userId,
         mcModifiedOn: new Date(),
@@ -131,12 +134,17 @@ export class MenucategorydetailComponent implements OnInit {
   clearAll() {
     if (confirm('Are you sure you want to clear all?')) {
       this.valueInput.setValue('');
+      this.descriptionInput.setValue('');
       this.specialCategoryInput.setValue('');
     }
   }
 
   get valueInput() {
     return this.mcForm.get('value');
+  }
+
+  get descriptionInput() {
+    return this.mcForm.get('description');
   }
 
   get specialCategoryInput() {

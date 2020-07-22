@@ -53,9 +53,9 @@
                   <tr *ngIf="menucategorys != null">
                     <th style="width: 5%">#</th>
                     <th width="10%"><em class="fa fa-cog"></em></th>
-                    <th width="45%">Value</th>
-                    <th width="20%">Is Special Category?</th>
-                    <th class="hidden-xs" width="30%">Created By</th>                    
+                    <th width="30%">Value</th>
+                    <th class="hidden-xs" width="45%">Description</th>
+                    <th width="20%">Is Special Category?</th>           
                   </tr> 
                 </thead>
                 <tbody>
@@ -73,8 +73,8 @@
                         <a class="btn btn-danger" (click)="deleteMenucategory(mc.mcId)"><em class="fa fa-trash"></em></a>
                       </td>                          
                       <td><span>{{ mc.mcValue }}</span></td>
+                      <td><span>{{ mc.mcDescription }}</span></td>
                       <td><span>{{ mc.mcSpecialCategory | yesNo }}</span></td>
-                      <td class="hidden-xs"><span>{{ mc.mcCreatedBy }}</span></td>
                     </tr>
                   </ng-template>
                   

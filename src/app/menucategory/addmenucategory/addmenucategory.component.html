@@ -17,7 +17,7 @@
                             <button 
                                 [ngClass]="stillCreatingMenucategory?'m-progress':''"
                                 class="btn btn-sm btn-primary"
-                                [disabled]="mcForm.invalid" (click)="addNewMenucategory()">Add Menucategory</button>
+                                [disabled]="mcForm.invalid" (click)="addNewMenucategory()">Add Menu Category</button>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         <!-- <br><br> -->                        
                         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                             <div id="information" class="panel panel-default">
-                                <div class="panel-heading">Menucategory Information</div>
+                                <div class="panel-heading">Menu category Information</div>
                                 <div class="panel-body">
                                     <form [formGroup]="mcForm">
                                         <div class="row">
@@ -43,6 +43,23 @@
                                                         class="input-group-addon">
                                                         <span 
                                                             [ngClass]="this.valueInput.invalid?'glyphicon-remove':'glyphicon-ok'"
+                                                            class="glyphicon"></span>
+                                                    </span>
+                                                </div><br>
+                                                <label for="validate-text">Description</label>
+                                                <div class="input-group" data-validate="length" data-length="5">
+                                                    <textarea 
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        name="validate-length" 
+                                                        id="description" 
+                                                        placeholder="Description"
+                                                        formControlName="description"></textarea>
+                                                    <span 
+                                                        [ngClass]="this.descriptionInput.invalid?'danger':'info'"
+                                                        class="input-group-addon">
+                                                        <span 
+                                                            [ngClass]="this.descriptionInput.invalid?'glyphicon-remove':'glyphicon-asterisk'"
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>

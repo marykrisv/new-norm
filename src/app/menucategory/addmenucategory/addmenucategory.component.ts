@@ -22,6 +22,7 @@ export class AddmenucategoryComponent implements OnInit {
 
   mcForm = new FormGroup({
     value: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    description: new FormControl('', Validators.minLength(2)),
     specialCategory: new FormControl(false)
   });
 
@@ -51,10 +52,12 @@ export class AddmenucategoryComponent implements OnInit {
     if (confirm('Are you sure you want to save this menu ategory?')) {
       this.stillCreatingMenucategory = true;
       const menucategory = {
-        mcValue: this.valueInput.value,
+        mcValue: this.valueInput.value.toString().trim(),
+        mcDescription: this.descriptionInput.value.toString().trim(),
         mcSpecialCategory: this.specialCategoryInput.value,
         mcCreatedBy: this.userSession.userId
       }
+      console.log(menucategory);
       this.mcService.createNewMenucategory(menucategory).then(response => {
         if (response['success'] == true) {
           alert(response['message']);
@@ -80,6 +83,10 @@ export class AddmenucategoryComponent implements OnInit {
 
   get valueInput() {
     return this.mcForm.get('value');
+  }
+
+  get descriptionInput() {
+    return this.mcForm.get('description');
   }
 
   get specialCategoryInput() {
