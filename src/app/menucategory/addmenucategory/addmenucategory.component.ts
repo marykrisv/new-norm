@@ -77,6 +77,7 @@ export class AddmenucategoryComponent implements OnInit {
   clearAll() {
     if (confirm('Are you sure you want to clear all?')) {
       this.valueInput.setValue('');
+      this.descriptionInput.setValue('');
       this.specialCategoryInput.setValue('');
     }
   }
