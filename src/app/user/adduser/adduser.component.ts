@@ -36,10 +36,8 @@ export class AdduserComponent implements OnInit {
     userGender: new FormControl('', Validators.required),
     userBirthdate: new FormControl('', Validators.required),
     userAddress: new FormControl('', Validators.required),
-    userCitizenship: new FormControl('', Validators.required),
     userContactNo: new FormControl('', PhoneValidator.isPhoneInvalid), //fix later
-    userRole: new FormControl('', Validators.required),
-    userLicenseNo: new FormControl('')
+    userRole: new FormControl('', Validators.required)
   });
 
   privilegeForm = new FormGroup({
@@ -47,8 +45,6 @@ export class AdduserComponent implements OnInit {
     priUser: new FormControl(false, Validators.required),
     priInventory: new FormControl(false, Validators.required),
     priManage: new FormControl(false, Validators.required),
-    priPatientManagement: new FormControl(false, Validators.required),
-    priPharmacyCorner: new FormControl(false, Validators.required),
     priNotification: new FormControl(false, Validators.required),
     priPos: new FormControl(false, Validators.required)
   });
@@ -82,12 +78,12 @@ export class AdduserComponent implements OnInit {
       this.priUserInput.setValue(false);
       this.priInventoryInput.setValue(false);
       this.priManageInput.setValue(false);
-      this.priPatientManagementInput.setValue(false);
-      this.priPharmacyCornerInput.setValue(false);
       this.priNotificationInput.setValue(false);
       this.priPosInput.setValue(false);
     } else {
       var privilege: PrivilegeInterface = RoleConfig.role[role];
+
+      console.log(privilege);
 
       this.priDashboardInput.setValue(privilege.priDashboard);
       this.priUserInput.setValue(privilege.priUser);
@@ -109,12 +105,10 @@ export class AdduserComponent implements OnInit {
     var lname = this.userLnameInput.value.toString().trim().toLowerCase();
     var fname = this.userFnameInput.value.toString().trim().toLowerCase().substring(0,2);
     var bday = this.userBirthdateInput.value.toString().trim();
-    var month = bday.substring(5,7);
-    var day = bday.substring(8,10);    
     var role = this.userRoleInput.value.toString().trim().toLowerCase().substring(0,2);
     
-    if (lname != '' && fname != '' && month != '' && day != '' && role != '') {
-      this.genUsername = lname+'.'+fname+'_'+role+month+day;
+    if (lname != '' && fname != '' && role != '') {
+      this.genUsername = lname+'.'+fname+'_'+role;
       this.userNameInput.setValue(this.genUsername);
     }
   }
@@ -134,13 +128,10 @@ export class AdduserComponent implements OnInit {
         userGender: this.userGenderInput.value,
         userBirthdate: this.userBirthdateInput.value,
         userAddress: this.userAddressInput.value,
-        userCitizenship: this.userCitizenshipInput.value,
         userContactNo: this.userContactNoInput.value,
         userRole: this.userRoleInput.value,
-        userLicenseNo: this.userLicenseNoInput.value,
         userStatus: UserStatus.Active,
         userIsNew: true,
-        userLocId: this.userSession.userLocId,
         userCreatedBy: this.userSession.userId
       }
       
@@ -170,10 +161,8 @@ export class AdduserComponent implements OnInit {
       this.userGenderInput.setValue('');
       this.userBirthdateInput.setValue('');
       this.userAddressInput.setValue('');
-      this.userCitizenshipInput.setValue('');
       this.userContactNoInput.setValue('');
       this.userRoleInput.setValue('');
-      this.userLicenseNoInput.setValue('');
 
       //clear password
       this.setRandomPassword();
@@ -183,8 +172,6 @@ export class AdduserComponent implements OnInit {
       this.priUserInput.setValue('');
       this.priInventoryInput.setValue('');
       this.priManageInput.setValue('');
-      this.priPatientManagementInput.setValue('');
-      this.priPharmacyCornerInput.setValue('');
       this.priNotificationInput.setValue('');
       this.priPosInput.setValue('');
 
@@ -262,20 +249,12 @@ export class AdduserComponent implements OnInit {
     return this.userForm.get('userAddress');
   }
 
-  get userCitizenshipInput () {
-    return this.userForm.get('userCitizenship');
-  }
-
   get userContactNoInput () {
     return this.userForm.get('userContactNo');
   }
 
   get userRoleInput () {
     return this.userForm.get('userRole');
-  }
-
-  get userLicenseNoInput () {
-    return this.userForm.get('userLicenseNo');
   }
 
   get priDashboardInput () {
@@ -292,14 +271,6 @@ export class AdduserComponent implements OnInit {
 
   get priManageInput () {
     return this.privilegeForm.get('priManage');
-  }
-
-  get priPatientManagementInput () {
-    return this.privilegeForm.get('priPatientManagement');
-  }
-
-  get priPharmacyCornerInput () {
-    return this.privilegeForm.get('priPharmacyCorner');
   }
 
   get priNotificationInput () {

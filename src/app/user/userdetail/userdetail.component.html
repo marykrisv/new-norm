@@ -37,7 +37,7 @@
                                 [ngClass]="stillUpdatingUser?'m-progress':''"
                                 class="btn btn-sm btn-warning"
                                 [disabled]="(userForm.touched && userForm.valid)?false:true"
-                                (click)="updatedUser()">
+                                (click)="updateUser()">
                                 <em class="fa fa-pencil"></em> Update</button>
                             <button 
                                 [ngClass]="stillDeletingUser?'m-progress':''"
@@ -50,13 +50,13 @@
                 <div class="panel-body main">
                     <div class="row">             
                         <!-- <br><br> -->                        
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <div id="information" class="panel panel-default">
                                 <div class="panel-heading">User Personal Information</div>
                                 <div class="panel-body">
                                     <form [formGroup]="userForm">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <label for="validate-text">First Name</label>
                                                 <div class="input-group">
                                                     <input 
@@ -108,29 +108,7 @@
                                                             [ngClass]="this.userLnameInput.invalid?'glyphicon-remove':'glyphicon-ok'"
                                                             class="glyphicon"></span>
                                                     </span>
-                                                </div>
-                                                <br>
-                                                <label for="validate-select">Gender</label>
-                                                <div class="input-group">
-                                                    <select 
-                                                        class="form-control" 
-                                                        name="validate-select" 
-                                                        id="validate-select" 
-                                                        placeholder="Validate Select"
-                                                        formControlName="userGender">
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
-                                                    <span 
-                                                        [ngClass]="this.userGenderInput.invalid?'danger':'success'"
-                                                        class="input-group-addon">
-                                                        <span 
-                                                            [ngClass]="this.userGenderInput.invalid?'glyphicon-remove':'glyphicon-ok'"
-                                                            class="glyphicon"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
+                                                </div><br>
                                                 <label for="validate-text">Birthdate</label>
                                                 <div class="input-group">
                                                     <input 
@@ -148,6 +126,27 @@
                                                     </span>
                                                 </div>
                                                 <br>
+                                                <label for="validate-select">Gender</label>
+                                                <div class="input-group">
+                                                    <select 
+                                                        class="form-control" 
+                                                        name="validate-select" 
+                                                        id="validate-select" 
+                                                        placeholder="Validate Select"
+                                                        formControlName="userGender">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                    <span 
+                                                        [ngClass]="this.userGenderInput.invalid?'danger':'success'"
+                                                        class="input-group-addon">
+                                                        <span 
+                                                            [ngClass]="this.userGenderInput.invalid?'glyphicon-remove':'glyphicon-ok'"
+                                                            class="glyphicon"></span>
+                                                    </span>
+                                                </div>
+                                                <br>                                               
                                                 <label for="validate-text">Contact No.</label>
                                                 <div class="input-group">
                                                     <input 
@@ -175,11 +174,11 @@
                                                         placeholder="Validate Select"
                                                         formControlName="userRole"
                                                         (change)="generateUserName(); setPrivilegeBasedOnRole();">
+                                                        <option value="">Select Role</option>
                                                         <option value="Super Admin">Super Admin</option>
                                                         <option value="Admin">Admin</option>
-                                                        <option value="Pharmacist">Pharmacist</option>
-                                                        <option value="Doctor">Doctor</option>
                                                         <option value="Staff">Staff</option>
+                                                        <option value="Cashier">Cashier</option>
                                                     </select>
                                                     <span 
                                                         [ngClass]="this.userRoleInput.invalid?'danger':'success'"
@@ -189,11 +188,7 @@
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                                <br>
                                                 <label for="validate-text">Address</label>
                                                 <div class="input-group">
                                                     <input 
@@ -216,25 +211,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div id="credential" class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="row">
-                                                <div class="col-lg-7 col-md-12 col-sm-12">
-                                                    User Login Credentials
-                                                </div>
-                                                <div class="col-lg-5 col-md-12 col-sm-12 text-right">
-                                                    <button 
-                                                        (click)="resetPassword()"
-                                                        class="btn btn-sm btn-primary">
-                                                        <em class="fa fa-trash"></em> Reset Password
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
+                                        <div class="panel-heading">User Login Credentials</div>
                                         <div class="panel-body">
                                             <form [formGroup]="userForm">
                                                 <label for="validate-text">Username</label>
@@ -259,7 +240,7 @@
                                                         type="text" 
                                                         class="form-control" 
                                                         formControlName="userPassword"
-                                                        placeholder="For reset password">
+                                                        placeholder="Password">
                                                     <span class="input-group-addon success">
                                                         <span class="glyphicon glyphicon-ok"></span>
                                                     </span>
@@ -313,6 +294,8 @@
                                                                 </label>
                                                             </li>
                                                         </ul>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 col-xs-12">
                                                         <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
                                                                 <span>Manage</span>                                                                
@@ -325,8 +308,6 @@
                                                                 </label>
                                                             </li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-12 col-xs-12">                                                        
                                                         <ul class="list-group list-group-flush">
                                                             <li class="list-group-item">
                                                                 <span>Notification</span>                                                                
@@ -367,7 +348,7 @@
             </div>
             
         </div>
-    </div>
+    </div>  
     <div class="row">
         <div class="col-md-12 text-center">
             <button class="backToTop" (click)="backToTop()">Back to Top</button>

@@ -67,7 +67,7 @@ export class UserdetailComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.auth.currentSession.subscribe(currentSession => this.userSession = currentSession);
+    this.auth.currentSession.subscribe(currentSession => this.userSession = currentSession);
 
     this.route.paramMap.subscribe(params => {
       this.userId = params.get('userId');
@@ -88,10 +88,8 @@ export class UserdetailComponent implements OnInit {
       this.userGenderInput.setValue(this.userDetail.userGender);
       this.userBirthdateInput.setValue(this.userDetail.userBirthdate);
       this.userAddressInput.setValue(this.userDetail.userAddress);
-      this.userCitizenshipInput.setValue(this.userDetail.userCitizenship);
       this.userContactNoInput.setValue(this.userDetail.userContactNo);
       this.userRoleInput.setValue(this.userDetail.userRole);
-      this.userLicenseNoInput.setValue(this.userDetail.userLicenseNo);
 
       // populate user privilege
       this.priDashboardInput.setValue(+this.userDetail.priDashboard);
@@ -165,7 +163,7 @@ export class UserdetailComponent implements OnInit {
   }
 
   populateDetails () {    
-    this.userService.viewUserDetail(this.userId, this.userSession.userLocId).then(response => {
+    this.userService.viewUserDetail(this.userId).then(response => {
       if(response['data'] != null) {
         this.userDetail = <UserInterface>response['data'][0];
 
@@ -174,6 +172,7 @@ export class UserdetailComponent implements OnInit {
         alert(ErrorHandling.showError(response));
       }
     }).catch(response => {
+      console.log(response);
       alert("Connection Problem. Please check your internet.");
     });
   }
@@ -230,17 +229,15 @@ export class UserdetailComponent implements OnInit {
     var lname = this.userLnameInput.value.toString().trim().toLowerCase();
     var fname = this.userFnameInput.value.toString().trim().toLowerCase().substring(0,2);
     var bday = this.userBirthdateInput.value.toString().trim();
-    var month = bday.substring(5,7);
-    var day = bday.substring(8,10);    
     var role = this.userRoleInput.value.toString().trim().toLowerCase().substring(0,2);
     
-    if (lname != '' && fname != '' && month != '' && day != '' && role != '') {
-      this.genUsername = lname+'.'+fname+'_'+role+month+day;
+    if (lname != '' && fname != '' && role != '') {
+      this.genUsername = lname+'.'+fname+'_'+role;
       this.userNameInput.setValue(this.genUsername);
     }
   }
 
-  updatedUser() {
+  updateUser() {
     if (confirm('Are you sure you want to update this user?')) {
       this.stillUpdatingUser = true;
 
@@ -279,6 +276,7 @@ export class UserdetailComponent implements OnInit {
           }
         }
       ).catch(response => {
+        console.log(response);
         alert("Connection Problem. Please check your internet.");
       }).finally(() => {        
         this.stillUpdatingUser = false;

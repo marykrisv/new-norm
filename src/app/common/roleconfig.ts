@@ -6,8 +6,6 @@ export class RoleConfig {
             priUser: true,
             priInventory: true,
             priManage: true,
-            priPatientManagement: true,
-            priPharmacyCorner: true,
             priNotification: true,
             priPos: true
         },
@@ -16,40 +14,24 @@ export class RoleConfig {
             priUser: true,
             priInventory: true,
             priManage: true,
-            priPatientManagement: true,
-            priPharmacyCorner: true,
             priNotification: true,
             priPos: true
-        },
-        "Pharmacist": {
-            priDashboard: false,
-            priUser: false,
-            priInventory: false,
-            priManage: false,
-            priPatientManagement: true,
-            priPharmacyCorner: true,
-            priNotification: true,
-            priPos: false
-        },
-        "Doctor": {
-            priDashboard: false,
-            priUser: false,
-            priInventory: false,
-            priManage: false,
-            priPatientManagement: true,
-            priPharmacyCorner: false,
-            priNotification: true,
-            priPos: false
         },
         "Staff": {
             priDashboard: false,
             priUser: false,
             priInventory: true,
             priManage: true,
-            priPatientManagement: false,
-            priPharmacyCorner: false,
             priNotification: true,
             priPos: false
+        },
+        "Cashier": {
+            priDashboard: false,
+            priUser: false,
+            priInventory: false,
+            priManage: false,
+            priNotification: true,
+            priPos: true
         }
     }
 }

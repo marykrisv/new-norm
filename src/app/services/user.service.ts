@@ -48,7 +48,7 @@ export class UserService {
     .toPromise();
   }
 
-  async viewUserDetail (userId, locId) {
+  async viewUserDetail (userId) {
     return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-user-detail.php?id='
     +userId)
     .toPromise();
