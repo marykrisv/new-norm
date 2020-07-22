@@ -1,3 +1,4 @@
+import { InventorycategoryModule } from './inventorycategory/inventorycategory.module';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UsersModule } from './user/user.module';
@@ -32,7 +33,8 @@ import { MenucategoryModule } from './menucategory/menucategory.module';
     UsersModule,
     LoginModule,
     ReactiveFormsModule,
-    MenucategoryModule
+    MenucategoryModule,
+    InventorycategoryModule
   ],
   providers: [
     AuthGuard,

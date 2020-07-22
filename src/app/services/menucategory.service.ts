@@ -11,29 +11,29 @@ export class MenucategoryService {
 
   constructor(private http: HttpClient) { }
 
-  async viewAllConcentration () {
+  async viewAllMenucategory () {
     return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-all-menucategory.php')
     .toPromise();
   }
 
-  async createNewConcentration(menucategory: any) {
+  async createNewMenucategory(menucategory: any) {
     return await this.http.post('http://'+ToolConfig.url+this.apiUrl+'create-menucategory', 
     JSON.stringify(menucategory))
     .toPromise();
   }
 
-  async viewConcentrationDetail (mcId: number) {
+  async viewMenucategoryDetail (mcId: number) {
     return await this.http.get('http://'+ToolConfig.url+this.apiUrl+'view-menucategory-detail.php?id='+mcId)
     .toPromise();
   }
 
-  async updateConcentration(menucategory: any) {
+  async updateMenucategory(menucategory: any) {
     return await this.http.put('http://'+ToolConfig.url+this.apiUrl+'update-menucategory', 
     JSON.stringify(menucategory))
     .toPromise();
   }
 
-  async deleteConcentration(menucategory: any) {
+  async deleteMenucategory(menucategory: any) {
     return await this.http.put('http://'+ToolConfig.url+this.apiUrl+'delete-menucategory', 
     JSON.stringify(menucategory))
     .toPromise();

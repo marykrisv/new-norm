@@ -11,7 +11,7 @@ const routes: Routes = [
     component: AddmenucategoryComponent
   },
   {
-    path: 'detail/:dosId',
+    path: 'detail/:mcId',
     component: MenucategorydetailComponent
   },
   {

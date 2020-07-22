@@ -60,7 +60,7 @@ export class AppComponent {
         this.data.changePrivilege(privilege);
         localStorage.setItem('privilege', JSON.stringify(privilege));
       
-        this.router.navigate(["menu/users"]);
+        // this.router.navigate(["menu/users"]);
       }
     ).catch(response => {
       alert("Connection Problem. Please check your internet.");

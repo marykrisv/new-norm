@@ -11,7 +11,7 @@ const routes: Routes = [
     component: AddinventorycategoryComponent
   },
   {
-    path: 'detail/:dosId',
+    path: 'detail/:icId',
     component: InventorycategorydetailComponent
   },
   {

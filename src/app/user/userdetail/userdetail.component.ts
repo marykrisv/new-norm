@@ -172,7 +172,6 @@ export class UserdetailComponent implements OnInit {
         alert(ErrorHandling.showError(response));
       }
     }).catch(response => {
-      console.log(response);
       alert("Connection Problem. Please check your internet.");
     });
   }
@@ -276,7 +275,6 @@ export class UserdetailComponent implements OnInit {
           }
         }
       ).catch(response => {
-        console.log(response);
         alert("Connection Problem. Please check your internet.");
       }).finally(() => {        
         this.stillUpdatingUser = false;
