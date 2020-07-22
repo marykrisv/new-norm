@@ -1,4 +1,4 @@
-import { InventorycategoryModule } from './inventorycategory/inventorycategory.module';
+import { StocktypeModule } from './stocktype/stocktype.module';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UsersModule } from './user/user.module';
@@ -35,8 +35,8 @@ import { UomModule } from './uom/uom.module';
     LoginModule,
     ReactiveFormsModule,
     MenucategoryModule,
-    InventorycategoryModule,
-    UomModule
+    UomModule,
+    StocktypeModule
   ],
   providers: [
     AuthGuard,
