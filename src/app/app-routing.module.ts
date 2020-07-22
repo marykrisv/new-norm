@@ -1,3 +1,4 @@
+import { MenucategoryModule } from './menucategory/menucategory.module';
 import { AuthGuard } from './auth/auth.guard';
 import { MenuviewComponent } from './menuview/menuview.component';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,14 @@ const routes: Routes = [
       {
         path: 'users',
         loadChildren: () => import('./user/user.module').then(m => m.UsersModule)
+      },
+      {
+        path: 'menu-categories',
+        loadChildren: () => import('./menucategory/menucategory.module').then(m => m.MenucategoryModule)
+      },
+      {
+        path: 'inventory-categories',
+        loadChildren: () => import('./inventorycategory/inventorycategory.module').then(m => m.InventorycategoryModule)
       }
     ]
   },
