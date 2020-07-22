@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MenuviewComponent } from './menuview/menuview.component';
 import { HeaderComponent } from './header/header.component';
+import { MenucategoryModule } from './menucategory/menucategory.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HeaderComponent } from './header/header.component';
     AuthModule,
     UsersModule,
     LoginModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenucategoryModule
   ],
   providers: [
     AuthGuard,
