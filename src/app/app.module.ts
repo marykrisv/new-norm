@@ -16,6 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { MenuviewComponent } from './menuview/menuview.component';
 import { HeaderComponent } from './header/header.component';
 import { MenucategoryModule } from './menucategory/menucategory.module';
+import { UomModule } from './uom/uom.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MenucategoryModule } from './menucategory/menucategory.module';
     LoginModule,
     ReactiveFormsModule,
     MenucategoryModule,
-    InventorycategoryModule
+    InventorycategoryModule,
+    UomModule
   ],
   providers: [
     AuthGuard,

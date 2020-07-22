@@ -1,6 +1,6 @@
 <div class="container">  
     <!-- view all -->
-    <h2>Add New Menu category</h2>
+    <h2>Add New Uom</h2>
     
     <div class="row">
         <div class="col-md-12">
@@ -15,9 +15,9 @@
                                 style="margin-right: 5px;"
                                 class="btn btn-sm btn-default" (click)="clearAll()">Clear All</button>
                             <button 
-                                [ngClass]="stillCreatingMenucategory?'m-progress':''"
+                                [ngClass]="stillCreatingUom?'m-progress':''"
                                 class="btn btn-sm btn-primary"
-                                [disabled]="mcForm.invalid" (click)="addNewMenucategory()">Add Menu Category</button>
+                                [disabled]="uomForm.invalid" (click)="addNewUom()">Add Uom</button>
                         </div>
                     </div>
                 </div>
@@ -26,9 +26,9 @@
                         <!-- <br><br> -->                        
                         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                             <div id="information" class="panel panel-default">
-                                <div class="panel-heading">Menu category Information</div>
+                                <div class="panel-heading">Uom Information</div>
                                 <div class="panel-body">
-                                    <form [formGroup]="mcForm">
+                                    <form [formGroup]="uomForm">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label for="validate-text">Value</label>
@@ -64,19 +64,6 @@
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>
-                                                <br><br>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">
-                                                        <span>Is Special Category?</span>                                                                
-                                                        <label class="switch">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                class="primary" 
-                                                                formControlName="specialCategory">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </li>
-                                                </ul>
                                             </div>                                            
                                         </div>
                                         

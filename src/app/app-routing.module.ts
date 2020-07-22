@@ -27,6 +27,10 @@ const routes: Routes = [
       {
         path: 'inventory-categories',
         loadChildren: () => import('./inventorycategory/inventorycategory.module').then(m => m.InventorycategoryModule)
+      },
+      {
+        path: 'uoms',
+        loadChildren: () => import('./uom/uom.module').then(m => m.UomModule)
       }
     ]
   },

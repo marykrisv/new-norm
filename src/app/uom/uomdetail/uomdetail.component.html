@@ -1,23 +1,38 @@
 <div class="container">  
     <!-- view all -->
-    <h2>Add New Menu category</h2>
+    <h2>Uom Detail</h2>
     
-    <div class="row">
+    <div *ngIf="this.uomDetails != null" class="row">
         <div class="col-md-12">
             <div class="panel panel-default">                
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-md-3 col-xs-12">
-                            <button class="btn btn-sm btn-default" (click)="back()">< Back</button>
+                        <div class="col-md-8 col-xs-12">
+                            <button 
+                                class="btn btn-sm btn-default" 
+                                (click)="back()">< Back</button>
+                            <div id="otherDetailsDiv">
+                                <span>
+                                    {{ 'Created: '+uomDetails.uomCreatedBy+' | '+uomDetails.uomCreatedOn }}
+                                </span>
+                                <span *ngIf="uomDetails.uomModifiedOn != null">
+                                    {{ 'Modified: '+uomDetails.uomModifiedBy+' | '+uomDetails.uomModifiedOn }}
+                                </span>
+                            </div>
+                            
                         </div>
-                        <div class="col-md-9 col-xs-12 text-right">
+                        <div class="col-md-4 col-sm-12 col-xs-12 text-right buttons">                            
                             <button 
-                                style="margin-right: 5px;"
-                                class="btn btn-sm btn-default" (click)="clearAll()">Clear All</button>
+                                [ngClass]="stillUpdatingUom?'m-progress':''"
+                                class="btn btn-sm btn-warning"
+                                [disabled]="((uomForm.touched || uomForm.dirty) && uomForm.valid)?false:true"
+                                (click)="updateUom()">
+                                <em class="fa fa-pencil"></em> Update</button>
                             <button 
-                                [ngClass]="stillCreatingMenucategory?'m-progress':''"
-                                class="btn btn-sm btn-primary"
-                                [disabled]="mcForm.invalid" (click)="addNewMenucategory()">Add Menu Category</button>
+                                [ngClass]="stillDeletingUom?'m-progress':''"
+                                class="btn btn-sm btn-danger"
+                                (click)="deleteUom()">
+                                <em class="fa fa-trash"></em> Delete</button>
                         </div>
                     </div>
                 </div>
@@ -26,9 +41,9 @@
                         <!-- <br><br> -->                        
                         <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
                             <div id="information" class="panel panel-default">
-                                <div class="panel-heading">Menu category Information</div>
+                                <div class="panel-heading">Uom Information</div>
                                 <div class="panel-body">
-                                    <form [formGroup]="mcForm">
+                                    <form [formGroup]="uomForm">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label for="validate-text">Value</label>
@@ -64,19 +79,6 @@
                                                             class="glyphicon"></span>
                                                     </span>
                                                 </div>
-                                                <br><br>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">
-                                                        <span>Is Special Category?</span>                                                                
-                                                        <label class="switch">
-                                                            <input 
-                                                                type="checkbox" 
-                                                                class="primary" 
-                                                                formControlName="specialCategory">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </li>
-                                                </ul>
                                             </div>                                            
                                         </div>
                                         
