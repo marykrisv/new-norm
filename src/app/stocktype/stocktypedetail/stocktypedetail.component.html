@@ -1,0 +1,96 @@
+<div class="container">  
+    <!-- view all -->
+    <h2>Stock Type Detail</h2>
+    
+    <div *ngIf="this.ssDetails != null" class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">                
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-12">
+                            <button 
+                                class="btn btn-sm btn-default" 
+                                (click)="back()">< Back</button>
+                            <div id="otherDetailsDiv">
+                                <span>
+                                    {{ 'Created: '+ssDetails.ssCreatedBy+' | '+ssDetails.ssCreatedOn }}
+                                </span>
+                                <span *ngIf="ssDetails.ssModifiedOn != null">
+                                    {{ 'Modified: '+ssDetails.ssModifiedBy+' | '+ssDetails.ssModifiedOn }}
+                                </span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 text-right buttons">                            
+                            <button 
+                                [ngClass]="stillUpdatingStocktype?'m-progress':''"
+                                class="btn btn-sm btn-warning"
+                                [disabled]="((ssForm.touched || ssForm.dirty) && ssForm.valid)?false:true"
+                                (click)="updateStocktype()">
+                                <em class="fa fa-pencil"></em> Update</button>
+                            <button 
+                                [ngClass]="stillDeletingStocktype?'m-progress':''"
+                                class="btn btn-sm btn-danger"
+                                (click)="deleteStocktype()">
+                                <em class="fa fa-trash"></em> Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">             
+                        <!-- <br><br> -->                        
+                        <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                            <div id="information" class="panel panel-default">
+                                <div class="panel-heading">Stock Type Information</div>
+                                <div class="panel-body">
+                                    <form [formGroup]="ssForm">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="validate-text">Value</label>
+                                                <div class="input-group">
+                                                    <input 
+                                                        [value] = "this.valueInput.value | titlecase"
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        formControlName="value"
+                                                        placeholder="Value">
+                                                    <span 
+                                                        [ngClass]="this.valueInput.invalid?'danger':'success'"
+                                                        class="input-group-addon">
+                                                        <span 
+                                                            [ngClass]="this.valueInput.invalid?'glyphicon-remove':'glyphicon-ok'"
+                                                            class="glyphicon"></span>
+                                                    </span>
+                                                </div>
+                                                <br>
+                                                <label for="validate-text">Description</label>
+                                                <div class="input-group" data-validate="length" data-length="5">
+                                                    <textarea 
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        name="validate-length" 
+                                                        id="description" 
+                                                        placeholder="Description"
+                                                        formControlName="description"></textarea>
+                                                    <span 
+                                                        [ngClass]="this.descriptionInput.invalid?'danger':'info'"
+                                                        class="input-group-addon">
+                                                        <span 
+                                                            [ngClass]="this.descriptionInput.invalid?'glyphicon-remove':'glyphicon-asterisk'"
+                                                            class="glyphicon"></span>
+                                                    </span>
+                                                </div>                                              
+                                            </div>                                            
+                                        </div>                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-popup></app-popup> -->
