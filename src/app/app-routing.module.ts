@@ -8,8 +8,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent
+    path: '',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'menu',

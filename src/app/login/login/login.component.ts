@@ -114,6 +114,7 @@ export class LoginComponent implements OnInit {
         this.passwordInput.setValue('');
       }
     ).catch(response => {
+      console.log(response);
       alert("Connection Problem. Please check your internet.");
     });
   }
