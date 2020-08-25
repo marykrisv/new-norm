@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomertableService } from 'src/app/services/customertable.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CustomertableInterface } from 'src/app/interface/customertable.interface';
 
 @Component({
@@ -14,18 +14,23 @@ export class CustomernameComponent implements OnInit {
   title = "Input Name";
   warning = null;
   customer_tables;
+  tableId;
 
   form = new FormGroup({
-    customerName: new FormControl('', Validators.required)
+    customerName: new FormControl('', [Validators.required, Validators.minLength(2)])
   });
 
   constructor(
     private tableService: CustomertableService,
-    private router: Router
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.populateCustomerTable();
+
+    this.route.paramMap.subscribe(params => {
+      this.tableId = params.get('tableId');
+    });
   }
 
   populateCustomerTable() {
@@ -37,11 +42,16 @@ export class CustomernameComponent implements OnInit {
     });
   }
   confirm() {
-    // this.view = 'input-name';
+    localStorage.setItem('table', this.tableId);
+    localStorage.setItem('customer-name', this.customerNameInput.value);
   }
 
   resetWarningMessage() {
 
+  }
+
+  get customerNameInput () {
+    return this.form.get('customerName');
   }
 
 }

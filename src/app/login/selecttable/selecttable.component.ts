@@ -37,11 +37,16 @@ export class SelecttableComponent implements OnInit {
     });
   }
   next() {
-    // this.view = 'input-name';
+    let tableNo: number = this.tableNoInput.value;
+    this.router.navigate(['customer-name/', tableNo]);
   }
 
   resetWarningMessage() {
 
+  }
+
+  get tableNoInput (){
+    return this.form.get('tableNo');
   }
 
 }
