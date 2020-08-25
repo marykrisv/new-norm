@@ -5,10 +5,11 @@
                     col-xs-12
                     ">
             <div class="loginPanel">
-                <div class="login">
-                    <div id="title">{{ title }}</div>
+                <div class="choosetable">
+                    <router-outlet></router-outlet>
+                    <!-- <div id="title">{{ title }}</div>       
                     <div *ngIf="view=='choose-table'; then thenBlock else elseBlock"></div>
-                    <ng-template #thenBlock>
+                    <ng-template #thenBlock>             
                         <form [formGroup]="form">
                             <div class="form-group">
                                 <div class="row">
@@ -17,15 +18,18 @@
                                             [ngClass]="warning != null?'alert-danger':''" 
                                             class="alert warningMessage">{{ warning }}
                                         </div>
-                                        <input 
-                                            formControlName="table"
-                                            class="inputStyle form-control" 
-                                            type="text" 
-                                            name="table_no" 
-                                            placeholder="Table No."
-                                            (click)="resetWarningMessage();"
-                                            (keyup.enter)="next()"
-                                        >                                    
+                                        <select 
+                                            class="form-control" 
+                                            name="validate-select" 
+                                            id="validate-select" 
+                                            placeholder="Validate Select"
+                                            formControlName="table_no">
+                                            <option value="">Select Type</option>
+                                            <option 
+                                                *ngFor="let table of customer_tables" 
+                                                [value]="table.ctId">{{ table.ctName }}</option>
+                                        </select> 
+                                        <br>                                  
                                     </div>
                                 </div>
                                 <div class="row">
@@ -40,12 +44,9 @@
                                     </div>
                                 </div>
                             </div>                        
-                        </form>
+                        </form>       
                     </ng-template>
-                    <ng-template #elseBlock>
-                        
-                    </ng-template>
-                                        
+                    <ng-template #elseBlock></ng-template>                                 -->
                 </div>
             </div>
         </div>

@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
-import { SelectTableComponent } from './select-table/select-table.component';
+import { CustomerloginComponent } from './customerlogin/customerlogin.component';
+import { SelecttableComponent } from './selecttable/selecttable.component';
+import { CustomernameComponent } from './customername/customername.component';
 
 @NgModule({
-  declarations: [LoginComponent, SelectTableComponent],
+  declarations: [LoginComponent, CustomerloginComponent, SelecttableComponent, CustomernameComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

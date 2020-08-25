@@ -1,0 +1,43 @@
+.choosetable{
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+    top: 30px;
+    position: relative;
+}
+
+.inputStyle {
+    width:100%;
+    height:35px;
+    margin-bottom:20px;
+
+    input {
+        height: 100%;
+    }
+
+    span.input-group-addon:hover {
+        background-color: lightblue;
+    }
+}
+
+.loginButton {
+    width:100%;
+    height:35px;
+    background-color: #cf000f;
+    border-color: #d91e18;
+    &:hover {
+        background-color: #95a5a6;
+    }
+}
+
+.warningMessage {
+    height: 30px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#title {
+    color:  #CF000F;
+    font-size: 30px;  
+}

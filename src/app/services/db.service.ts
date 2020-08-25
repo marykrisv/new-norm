@@ -42,6 +42,7 @@ export class DbService {
   }
 
   handleError(error) {
+    console.log(error);
     return throwError("Connection Problem. Please check your internet."); 
   }
 
