@@ -19,13 +19,13 @@ export class MenuviewComponent implements OnInit {
   ngOnInit(): void {
     this.data.currentSession.subscribe(currentSession => this.currentSession = currentSession);
     
-    if (this.currentSession != null) {    
-      if (this.currentSession.userRole == UserRole.Admin || this.currentSession.userRole == UserRole.SuperAdmin) {
-        // this.router.navigate(["menu/patient-management"]);
-      }      
-    } else {
-      //redirect to login
-      this.router.navigate(["/login"]);
-    }
+    // if (this.currentSession != null) {    
+    //   if (this.currentSession.userRole == UserRole.Admin || this.currentSession.userRole == UserRole.SuperAdmin) {
+    //     // this.router.navigate(["menu/patient-management"]);
+    //   }      
+    // } else {
+    //   //redirect to login
+    //   this.router.navigate(["/login"]);
+    // }
   }
 }

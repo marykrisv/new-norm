@@ -2,15 +2,10 @@
 import { MenuviewComponent } from './menuview/menuview.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
   {
     path: 'menu',
     component: MenuviewComponent,
@@ -34,9 +29,12 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
     path: '',
-    redirectTo: '\login',
-    pathMatch: 'full'
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   {
     path: '**',
