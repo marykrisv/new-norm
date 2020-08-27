@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SessionInterface } from 'src/app/interface/session.interface';
 import { MenucategoryInterface } from 'src/app/interface/menucategory.interface';
@@ -34,7 +35,8 @@ export class MenucategorydetailComponent implements OnInit {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private mcService: MenucategoryService
+    private mcService: MenucategoryService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,8 @@ export class MenucategorydetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.mcId = params.get('mcId');
     });
+
+    this.data.changeTitle('Menu category Detail');
 
     this.populateDetails();
   }

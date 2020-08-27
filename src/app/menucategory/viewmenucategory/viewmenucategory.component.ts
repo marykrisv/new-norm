@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { MenucategoryInterface } from 'src/app/interface/menucategory.interface';
 import { SessionInterface } from 'src/app/interface/session.interface';
@@ -41,13 +42,16 @@ export class ViewmenucategoryComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private mcService: MenucategoryService
+    private mcService: MenucategoryService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
     this.auth.currentSession.subscribe(currentSession => {
       this.userSession = currentSession;
     });
+
+    this.data.changeTitle('List of Menu Category(s)');
 
     this.viewAllMenucategory();
   }
