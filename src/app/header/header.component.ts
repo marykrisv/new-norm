@@ -1,3 +1,4 @@
+import { DataService } from 'src/app/services/data.service';
 import { SessionInterface } from '../interface/session.interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,17 +12,22 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit {
   menuSelected: string;
   userSession: SessionInterface;
+  title;
 
-  constructor(private data: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.currentSession.subscribe(
+    this.auth.currentSession.subscribe(
       usersession => this.userSession = usersession
+    );
+
+    this.data.currentUserPrivilege.subscribe(
+      title => console.log(title)
     );
   }
 
   logout() {
-    this.data.changeSession(null);
+    this.auth.changeSession(null);
     localStorage.clear();
     this.router.navigate(['/login']);
     

@@ -1,3 +1,4 @@
+import { DataService } from 'src/app/services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { StocktypeInterface } from 'src/app/interface/stocktype.interface';
 import { SessionInterface } from 'src/app/interface/session.interface';
@@ -41,13 +42,16 @@ export class ViewstocktypeComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private ssService: StocktypeService
+    private ssService: StocktypeService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
     this.auth.currentSession.subscribe(currentSession => {
       this.userSession = currentSession;
     });
+
+    this.data.changeTitle('List of Stock Type(s)');
 
     this.viewAllStocktype();
   }
