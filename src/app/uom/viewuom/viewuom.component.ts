@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { UomInterface } from 'src/app/interface/uom.interface';
 import { SessionInterface } from 'src/app/interface/session.interface';
@@ -37,13 +38,16 @@ export class ViewuomComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private uomService: UomService
+    private uomService: UomService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
     this.auth.currentSession.subscribe(currentSession => {
       this.userSession = currentSession;
     });
+
+    this.data.changeTitle('List of Uom(s)');
 
     this.viewAllUom();
   }

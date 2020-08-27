@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SessionInterface } from 'src/app/interface/session.interface';
 import { UomInterface } from 'src/app/interface/uom.interface';
@@ -33,7 +34,8 @@ export class UomdetailComponent implements OnInit {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private uomService: UomService
+    private uomService: UomService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,8 @@ export class UomdetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.uomId = params.get('uomId');
     });
+
+    this.data.changeTitle('Uom Detail');
 
     this.populateDetails();
   }
