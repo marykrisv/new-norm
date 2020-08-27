@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SessionInterface } from 'src/app/interface/session.interface';
 import { StocktypeInterface } from 'src/app/interface/stocktype.interface';
@@ -33,7 +34,8 @@ export class StocktypedetailComponent implements OnInit {
     private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private ssService: StocktypeService
+    private ssService: StocktypeService,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,8 @@ export class StocktypedetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.ssId = params.get('ssId');
     });
+
+    this.data.changeTitle('Stock Type Detail');
 
     this.populateDetails();
   }

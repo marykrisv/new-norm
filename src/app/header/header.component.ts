@@ -11,26 +11,27 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   menuSelected: string;
-  userSession: SessionInterface;
+  // userSession: SessionInterface;
   title;
 
   constructor(private auth: AuthService, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
-    this.auth.currentSession.subscribe(
-      usersession => this.userSession = usersession
-    );
+    // this.auth.currentSession.subscribe(
+    //   usersession => this.userSession = usersession
+    // );
 
-    this.data.currentUserPrivilege.subscribe(
-      title => console.log(title)
+    this.data.currentTitle.subscribe(
+      title => {
+        this.title = title;
+      }
     );
   }
 
   logout() {
     this.auth.changeSession(null);
     localStorage.clear();
-    this.router.navigate(['/login']);
-    
+    this.router.navigate(['/login']);    
   }
 
   showDropDown ($event) {

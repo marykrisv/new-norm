@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SessionInterface } from 'src/app/interface/session.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -28,13 +29,16 @@ export class AddstocktypeComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private ssService: StocktypeService,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) { }
 
   ngOnInit(): void {
     this.auth.currentSession.subscribe(
       currentSession => this.userSession = currentSession
-    );
+    );    
+
+    this.data.changeTitle('Add New Stock Type');
   }
 
   back() {
