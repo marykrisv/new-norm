@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomertableService } from 'src/app/services/customertable.service';
 import { Router } from '@angular/router';
 import { CustomertableInterface } from 'src/app/interface/customertable.interface';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-selecttable',
@@ -26,6 +27,19 @@ export class SelecttableComponent implements OnInit {
 
   ngOnInit(): void {
     this.populateCustomerTable();
+
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    console.log(localStorage.getItem('customer-id') == null);
+    if ((localStorage.getItem('customer-id') == '' || localStorage.getItem('customer-id') == null) || 
+        (localStorage.getItem('table') == '' || localStorage.getItem('table') == null)) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['/menu']);
+          console.log('test');
+        }
   }
 
   populateCustomerTable() {
