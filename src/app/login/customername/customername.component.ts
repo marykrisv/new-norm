@@ -47,8 +47,8 @@ export class CustomernameComponent implements OnInit {
       alert(error);
     });
   }
-  confirm() {
 
+  confirm() {
     let order = {
       'coCtId': this.tableId,
       'coStatus' : 'Pending'
@@ -56,7 +56,6 @@ export class CustomernameComponent implements OnInit {
 
     this.order.create(order).subscribe(response => {    
       var coId;
-      console.log(response);
       if (response['success']) {
         coId = response['coId'];
         this.createCustomer(coId);

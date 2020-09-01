@@ -1,3 +1,4 @@
+import { UserType } from './../../interface/session.interface';
 
 import { PasswordValidator } from './../../validators/password.validator';
 import { HttpClient } from '@angular/common/http';
@@ -170,7 +171,8 @@ export class LoginComponent implements OnInit {
       userLname: response['data'][0]['userLname'],
       userLocId: response['data'][0]['userLocId'],
       userLocName: response['data'][0]['locName'],
-      userRole: response['data'][0]['userRole']
+      userRole: response['data'][0]['userRole'],
+      userType: UserType.staff
     };
     this.auth.changeSession(usersession);            
   }
