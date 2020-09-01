@@ -27,14 +27,14 @@
                         <i class="fa fa-database fa-lg"></i> Inventory
                     </a>
                 </li>
-                <li [ngClass]="userPrivilege.priInventory==false?'hidden':''"
+                <li [ngClass]="userPrivilege.priMenu==false?'hidden':''"
                     routerLink="menu" 
                     routerLinkActive="active">
                     <a>
                         <i class="fa fa-object-group fa-lg"></i> Menu
                     </a>
                 </li>
-                <li [ngClass]="userPrivilege.priInventory==false?'hidden':''"
+                <li [ngClass]="userPrivilege.priOrders==false?'hidden':''"
                     routerLink="orders" 
                     routerLinkActive="active">
                     <a>
@@ -43,14 +43,13 @@
                 </li>
                 <li 
                     [ngClass]="userPrivilege.priManage==false?'hidden':''"
-                    [ngClass]="isManage?'active':''"
                     data-toggle="collapse" 
                     data-target="#others" 
                     class="collapsed">
                     <a><i class="fa fa-cogs fa-lg"></i> Manage <span class="arrow"></span></a>
                 </li>
-                    <!-- <ul class="sub-menu collapse" id="others"> -->
-                    <ul class="sub-menu" id="others">
+                    <ul class="sub-menu collapse" id="others">
+                    <!-- <ul class="sub-menu" id="others"> -->
                         <!-- <li class="active"><a href="#">Concentration</a></li> -->
                      <li routerLink="stock-types"
                             routerLinkActive="active"><a>Stock Type</a></li>
@@ -67,6 +66,13 @@
                 <li [ngClass]="userPrivilege.priPos==false?'hidden':''">
                     <a href="#">
                         <i class="fa fa-calculator fa-lg"></i> POS
+                    </a>
+                </li>
+                <li [ngClass]="userPrivilege.priTools==false?'hidden':''"
+                    routerLink="assistance" 
+                    routerLinkActive="active">
+                    <a>
+                        <i class="fa fa-bell fa-lg"></i> Call for Assistance
                     </a>
                 </li>
             </ul>                

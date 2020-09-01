@@ -25,21 +25,37 @@ export class SideMenuComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+    let type = this.getUserType();
+
+    if (type == 'customer') {
+      this.userPrivilege = {
+        priDashboard: false,
+        priUser: false,
+        priInventory: false,
+        priMenu: true,
+        priOrders: true,
+        priManage: false,
+        priNotification: false,
+        priPos: false,
+        priTools: true
+      }
+    }
     // this.data.currentUserPrivilege.subscribe(currentUserPrivilege => 
     //   this.userPrivilege = currentUserPrivilege
     // );
-    this.userPrivilege = {
-      priDashboard: true,
-      priUser: true,
-      priInventory: true,
-      priManage: true,
-      priNotification: true,
-      priPos: true
-    }
+    // this.userPrivilege = {
+    //   priDashboard: true,
+    //   priUser: true,
+    //   priInventory: true,
+    //   priManage: true,
+    //   priNotification: true,
+    //   priPos: true
+    // }
 
-    this.auth.currentSession.subscribe(currentSession => 
-      this.userSession = currentSession
-    );
+    // this.auth.currentSession.subscribe(currentSession => 
+    //   this.userSession = currentSession
+    // );
 
     //hide dashboard
     // if (this.userSession.userRole.toLowerCase() != 'admin'
@@ -50,6 +66,10 @@ export class SideMenuComponent implements OnInit {
     // } 
 
     // console.log(this.router.url);
+  }
+
+  getUserType() {
+    return localStorage.getItem('user-type');
   }
 
   openSubmenu ($event) {
