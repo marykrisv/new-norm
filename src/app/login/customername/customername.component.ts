@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { ErrorHandling } from './../../common/error-handling';
 import { CustomerService } from './../../services/customer.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { CustomertableService } from 'src/app/services/customertable.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CustomertableInterface } from 'src/app/interface/customertable.interface';
 import { CustomerorderService } from 'src/app/services/customerorder.service';
+import { UserType } from 'src/app/interface/session.interface';
 
 @Component({
   selector: 'app-customername',
@@ -28,7 +30,8 @@ export class CustomernameComponent implements OnInit {
     private route: ActivatedRoute,
     private customer: CustomerService,
     private order: CustomerorderService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -93,7 +96,8 @@ export class CustomernameComponent implements OnInit {
       } else {
         alert(ErrorHandling.showError(response));
       }
-    });   
+    });
+    
   }
 
   resetWarningMessage() {

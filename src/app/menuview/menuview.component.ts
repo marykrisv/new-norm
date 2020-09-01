@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { SessionInterface } from '../interface/session.interface';
+import { SessionInterface, UserType } from '../interface/session.interface';
 import { UserRole } from '../interface/user.interface';
 
 @Component({
@@ -17,15 +17,28 @@ export class MenuviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.currentSession.subscribe(currentSession => this.currentSession = currentSession);
+    // this.data.currentSession.subscribe(currentSession => this.currentSession = currentSession);
+
     
     // if (this.currentSession != null) {    
-    //   if (this.currentSession.userRole == UserRole.Admin || this.currentSession.userRole == UserRole.SuperAdmin) {
-    //     // this.router.navigate(["menu/patient-management"]);
-    //   }      
+    //   console.log(this.currentSession);
+    //   if (this.currentSession.userType == UserType.customer) {
+    //     //redirect to login
+    //     // this.router.navigate(["/menu"]);
+    //   }  
     // } else {
     //   //redirect to login
-    //   this.router.navigate(["/login"]);
+    //   // this.router.navigate(["/login"]);
     // }
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    if ((localStorage.getItem('customer-id') == '' || localStorage.getItem('customer-id') == null) || 
+        (localStorage.getItem('table') == '' || localStorage.getItem('table') == null)) {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['/menu']);
+        }
   }
 }

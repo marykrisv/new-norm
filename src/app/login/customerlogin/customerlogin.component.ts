@@ -43,15 +43,6 @@ export class CustomerloginComponent implements OnInit {
     });
   }
 
-  setUsersession (response: any) {
-    let usersession = {
-      userId: response['data'][0]['userId'],
-      userName: response['data'][0]['userName'],
-      userType: UserType.customer
-    };
-    this.auth.changeSession(usersession);            
-  }
-
   // setPrivileges (response: any) {
   //   let privilege = {
   //     priUserId: response['data'][0]['userId'],
