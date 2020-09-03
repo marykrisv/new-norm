@@ -50,7 +50,7 @@ export class MenucategorydetailComponent implements OnInit {
 
     this.data.changeTitle('Menu category Detail');
 
-    this.populateDetails();
+    // this.populateDetails();
   }
 
   back() {
@@ -64,17 +64,17 @@ export class MenucategorydetailComponent implements OnInit {
   }
 
   populateDetails () {    
-    this.mcService.viewMenucategoryDetail(this.mcId).then(response => {
-      if (response['data'] != null) {
-        this.mcDetails = <MenucategoryInterface>response['data'][0];
+    // this.mcService.viewMenucategoryDetail(this.mcId).then(response => {
+    //   if (response['data'] != null) {
+    //     this.mcDetails = <MenucategoryInterface>response['data'][0];
 
-        this.intializeForm();
-      } else {
-        alert(ErrorHandling.showError(response));
-      }
-    }).catch(response => {
-      alert("Connection Problem. Please check your internet.");
-    });
+    //     this.intializeForm();
+    //   } else {
+    //     alert(ErrorHandling.showError(response));
+    //   }
+    // }).catch(response => {
+    //   alert("Connection Problem. Please check your internet.");
+    // });
   }
 
   intializeForm() {
@@ -96,19 +96,19 @@ export class MenucategorydetailComponent implements OnInit {
         mcModifiedOn: new Date(),
         mcId: this.mcDetails.mcId
       }
-      this.mcService.updateMenucategory(menucategory).then(response => {
-        if (response['success'] == true) {
-          alert(response['message']);
+      // this.mcService.updateMenucategory(menucategory).then(response => {
+      //   if (response['success'] == true) {
+      //     alert(response['message']);
 
-          this.updated = true;
-        } else {
-          alert(ErrorHandling.showError(response));
-        }        
-      }).catch(response => {
-        alert("Connection Problem. Please check your internet.");
-      }).finally(() => {
-        this.stillUpdatingMenucategory = false;
-      });
+      //     this.updated = true;
+      //   } else {
+      //     alert(ErrorHandling.showError(response));
+      //   }        
+      // }).catch(response => {
+      //   alert("Connection Problem. Please check your internet.");
+      // }).finally(() => {
+      //   this.stillUpdatingMenucategory = false;
+      // });
     }
   }
 
@@ -120,18 +120,18 @@ export class MenucategorydetailComponent implements OnInit {
         mcModifiedOn: new Date(),
         mcId: this.mcDetails.mcId
       }
-      this.mcService.deleteMenucategory(menucategory).then(response => {
-        if (response['success'] == true) {
-          alert(response['message']);
-          this.router.navigate(["/menu/menucategorys"]);
-        } else {
-          alert(ErrorHandling.showError(response));
-        }        
-      }).catch(response => {
-        alert("Connection Problem. Please check your internet.");
-      }).finally(() => {
-        this.stillDeletingMenucategory = false;
-      });
+      // this.mcService.deleteMenucategory(menucategory).then(response => {
+      //   if (response['success'] == true) {
+      //     alert(response['message']);
+      //     this.router.navigate(["/menu/menucategorys"]);
+      //   } else {
+      //     alert(ErrorHandling.showError(response));
+      //   }        
+      // }).catch(response => {
+      //   alert("Connection Problem. Please check your internet.");
+      // }).finally(() => {
+      //   this.stillDeletingMenucategory = false;
+      // });
     }
   }
 

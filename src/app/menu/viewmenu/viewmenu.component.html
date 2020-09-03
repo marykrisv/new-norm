@@ -1,0 +1,17 @@
+<p>viewmenu works!</p>
+<select name="" id="" (change)="selectCategory()">
+    <option 
+            *ngFor="let cat of categories" 
+            [value]="cat.catId">{{ cat.mcName }}</option>
+</select>
+<br><br>
+<div *ngFor="let menu of menus; let i = index">
+    <li>{{ menu.mId }}</li>
+    <li>{{ menu.mName }}</li>
+    <li>{{ menu.mDescription }}</li>
+    <li>{{ menu.mPrice }}</li>
+    <li>{{ menu.menuCategory }}</li>
+    <li>{{ menu.menuSpecialCategory }}</li>
+    <button>add</button>
+    <br><br><br>
+</div>

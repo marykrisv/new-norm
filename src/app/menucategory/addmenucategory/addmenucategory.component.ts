@@ -62,19 +62,19 @@ export class AddmenucategoryComponent implements OnInit {
         mcCreatedBy: this.userSession.userId
       }
       console.log(menucategory);
-      this.mcService.createNewMenucategory(menucategory).then(response => {
-        if (response['success'] == true) {
-          alert(response['message']);
+      // this.mcService.createNewMenucategory(menucategory).then(response => {
+      //   if (response['success'] == true) {
+      //     alert(response['message']);
 
-          this.added = true;
-        } else {
-          alert(ErrorHandling.showError(response));
-        }        
-      }).catch(response => {
-        alert("Connection Problem. Please check your internet.");
-      }).finally(() => {
-        this.stillCreatingMenucategory = false;
-      });
+      //     this.added = true;
+      //   } else {
+      //     alert(ErrorHandling.showError(response));
+      //   }        
+      // }).catch(response => {
+      //   alert("Connection Problem. Please check your internet.");
+      // }).finally(() => {
+      //   this.stillCreatingMenucategory = false;
+      // });
     }
   }
 

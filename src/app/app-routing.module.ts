@@ -15,6 +15,10 @@ const routes: Routes = [
         loadChildren: () => import('./user/user.module').then(m => m.UsersModule)
       },
       {
+        path: 'menus',
+        loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+      },
+      {
         path: 'menu-categories',
         loadChildren: () => import('./menucategory/menucategory.module').then(m => m.MenucategoryModule)
       },

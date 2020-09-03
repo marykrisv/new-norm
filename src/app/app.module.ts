@@ -1,3 +1,4 @@
+import { MenuModule } from './menu/menu.module';
 import { CustomertableModule } from './customertable/customertable.module';
 import { StocktypeModule } from './stocktype/stocktype.module';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -38,7 +39,8 @@ import { UomModule } from './uom/uom.module';
     MenucategoryModule,
     UomModule,
     StocktypeModule,
-    CustomertableModule
+    CustomertableModule,
+    MenuModule
   ],
   providers: [
     AuthGuard,

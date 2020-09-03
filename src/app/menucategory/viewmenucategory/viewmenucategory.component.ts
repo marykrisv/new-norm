@@ -57,24 +57,24 @@ export class ViewmenucategoryComponent implements OnInit {
   }
 
   viewAllMenucategory () {
-    this.mcService.viewAllMenucategory().then(response => {
-      this.populateMenucategory(response);
-    }).catch(response => {
-      alert("Connection Problem. Please check your internet.");
-    });
+    // this.mcService.viewAllMenucategory().then(response => {
+    //   this.populateMenucategory(response);
+    // }).catch(response => {
+    //   alert("Connection Problem. Please check your internet.");
+    // });
   }
 
   populateMenucategory(response) {
-    this.loading = true;
-    if (response['data'] != undefined) {
-      this.menucategorys = <MenucategoryInterface[]>response['data'];
-      this.totalMcCount = response['data'][0]['total'];
-    } else {
-      this.menucategorys = null;
-      this.totalMcCount = 0;
-      // alert(ErrorHandling.showError(response));
-    }
-    this.loading = false;
+    // this.loading = true;
+    // if (response['data'] != undefined) {
+    //   this.menucategorys = <MenucategoryInterface[]>response['data'];
+    //   this.totalMcCount = response['data'][0]['total'];
+    // } else {
+    //   this.menucategorys = null;
+    //   this.totalMcCount = 0;
+    //   // alert(ErrorHandling.showError(response));
+    // }
+    // this.loading = false;
   }
 
   changeFilterBy (filterBy: string) {
@@ -104,26 +104,26 @@ export class ViewmenucategoryComponent implements OnInit {
   }
 
   deleteMenucategory (mcId) {
-    if (confirm('Are you sure you want to delete this menucategory?')) {
-      const menucategory = {
-        mcId: mcId,
-        mcModifiedOn: new Date(),
-        mcModifiedBy: this.userSession.userId
-      }
-      this.mcService.deleteMenucategory(menucategory).then(response => {
-        if (response['success'] == true) {
-          alert(response['message']);
+    // if (confirm('Are you sure you want to delete this menucategory?')) {
+    //   const menucategory = {
+    //     mcId: mcId,
+    //     mcModifiedOn: new Date(),
+    //     mcModifiedBy: this.userSession.userId
+    //   }
+    //   this.mcService.deleteMenucategory(menucategory).then(response => {
+    //     if (response['success'] == true) {
+    //       alert(response['message']);
           
-          //delete row
-          this.deleteRow(mcId);
+    //       //delete row
+    //       this.deleteRow(mcId);
 
-        } else {
-          alert(ErrorHandling.showError(response));
-        }
-      }).catch(response => {
-        alert("Connection Problem. Please check your internet.");
-      });
-    }
+    //     } else {
+    //       alert(ErrorHandling.showError(response));
+    //     }
+    //   }).catch(response => {
+    //     alert("Connection Problem. Please check your internet.");
+    //   });
+    // }
   }
 
   deleteRow (mcId) {
