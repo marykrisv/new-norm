@@ -11,7 +11,7 @@ export class DbService {
 
   apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   viewAll(): Observable<any> {
     return this.http.get<any>('http://'+ToolConfig.url+this.apiUrl+'view-all.php')

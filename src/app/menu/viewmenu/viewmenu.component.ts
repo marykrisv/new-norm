@@ -1,6 +1,8 @@
 import { MenucategoryService } from 'src/app/services/menucategory.service';
 import { MenuService } from './../../services/menu.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PhoneValidator } from 'src/app/validators/phone.validator';
 
 @Component({
   selector: 'app-viewmenu',
@@ -11,6 +13,13 @@ export class ViewmenuComponent implements OnInit {
 
   menus;
   categories;
+  specialcategories;
+
+  categoryType: string;
+
+  categoryForm = new FormGroup({
+    categoryname: new FormControl('All')
+  });
 
   constructor(
     private menuService: MenuService,
@@ -19,11 +28,12 @@ export class ViewmenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewAllMenu();
-    this.viewAllMenuCategory();
+    this.viewAllMenuCategoryNonSpecial();
+    this.viewAllMenuCategorySpecial();
   }
 
-  viewAllMenuCategory() {
-    this.menuCategoryService.viewAll().subscribe(response => {
+  viewAllMenuCategoryNonSpecial() {
+    this.menuCategoryService.viewAllNonSpecial().subscribe(response => {
       if (response['data'] != undefined) {
         this.categories = response['data'];
       } else {
@@ -32,15 +42,41 @@ export class ViewmenuComponent implements OnInit {
     });
   }
 
+  viewAllMenuCategorySpecial() {
+    this.menuCategoryService.viewAllSpecial().subscribe(response => {
+      if (response['data'] != undefined) {
+        this.specialcategories = response['data'];
+      } else {
+        this.specialcategories = null;
+      }
+    });
+  }
+
   viewAllMenu () {
     this.menuService.viewAll().subscribe(response => {
-      this.populateConcentration(response);
+      this.populateMenu(response);
+    }, (error) => {
+      alert(error);
+    });
+  }
+  
+  viewAllMenuNonSpecial(mcId) {
+    this.menuService.viewAllMenuNonSpecial(mcId).subscribe(response => {
+      this.populateMenu(response);
     }, (error) => {
       alert(error);
     });
   }
 
-  populateConcentration(response) {
+  viewAllMenuSpecial(mcId) {
+    this.menuService.viewAllMenuSpecial(mcId).subscribe(response => {
+      this.populateMenu(response);
+    }, (error) => {
+      alert(error);
+    });
+  }
+
+  populateMenu(response) {
     // this.loading = true;
     if (response['data'] != undefined) {
       // this.concentrations = <ConcentrationInterface[]>response['data'];
@@ -55,8 +91,26 @@ export class ViewmenuComponent implements OnInit {
     // this.loading = false;
   }
 
+  changeCategoryType (value: string) {
+    this.categoryType = value;
+
+    this.selectCategory();
+  }
+
   selectCategory() {
-    console.log('test');
+    let category = this.categorynameInput.value;
+
+    if (this.categoryType == 'all') {
+      this.viewAllMenu();
+    } else if (this.categoryType == 'non-special') {
+      this.viewAllMenuNonSpecial(category);
+    } else {
+      this.viewAllMenuSpecial(category);
+    }
+  }
+
+  get categorynameInput () {
+    return this.categoryForm.get('categoryname');
   }
 
 }

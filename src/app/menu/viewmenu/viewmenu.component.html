@@ -1,9 +1,23 @@
 <p>viewmenu works!</p>
-<select name="" id="" (change)="selectCategory()">
-    <option 
+<span>Non Special</span>
+<form [formGroup]="categoryForm">
+    <select 
+        name="" id=""
+        formControlName="categoryname">
+        <option 
+            (click)="changeCategoryType('all')"
+            value='All'>All</option>
+        <option 
+            (click)="changeCategoryType('non-special')"
             *ngFor="let cat of categories" 
-            [value]="cat.catId">{{ cat.mcName }}</option>
-</select>
+            [value]="cat.mcId">{{ cat.mcName }}</option>
+        <option 
+            (click)="changeCategoryType('special')"
+            *ngFor="let cat of specialcategories" 
+            [value]="cat.mcId">{{ cat.mcName }}</option>
+    </select>
+</form>
+
 <br><br>
 <div *ngFor="let menu of menus; let i = index">
     <li>{{ menu.mId }}</li>
